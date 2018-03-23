@@ -4,7 +4,7 @@ var apiKey = "YHnPcJvXmqkIrQvG5kkUeG4dfTIaCOel";
 
 var queryURL;
 
-queryURL = "https://api.giphy.com/v1/gifs/search?api_key=YHnPcJvXmqkIrQvG5kkUeG4dfTIaCOel&q=&limit=25&offset=0&rating=G&lang=en";
+queryURL = "https://api.giphy.com/v1/gifs/search?api_key=YHnPcJvXmqkIrQvG5kkUeG4dfTIaCOel&q=matrix&limit=25&offset=0&rating=G&lang=en";
 
 var giphyresponse = {};
 
