@@ -38,7 +38,8 @@ $(document).ready(function () {
         var params = {
             api_key: apiKey,
             q: animalQ,
-            limit: maxImages
+            limit: maxImages,
+            rating: "pg-13"
         };
         var queryURL = "http://api.giphy.com/v1/gifs/search?" + jQuery.param(params);
 
@@ -59,25 +60,39 @@ $(document).ready(function () {
                     console.log(element.images.fixed_height.url);
                     console.log(element.images.fixed_height_still.url);
                     newImg = $('<img>')
+                        .addClass('gif')
                         .attr({
-                            src: element.images.fixed_height.url,
+                            src: element.images.fixed_height_still.url,
                             alt: animalQ + " gif",
-                            // width: "",
-                            // height: ""
+                            width: element.images.fixed_height.width,
+                            height: element.images.fixed_height.height
+                        })
+                        .data({
+                            urlAnimate: element.images.fixed_height.url,
+                            urlStill: element.images.fixed_height_still.url,
+                            state: "still"
                         });
                     $('#images').append(newImg);
                     console.log('appended');
-
                 });
-
-
-
             });
-
-
     });
 
- 
+    $('#images').on('click', '.gif', function () {
+        var imgData = $(this).data();
+        var state = imgData.state;
+        console.log(imgData);
+        console.log('clicked an image. a: ' + imgData.urlAnimate + ' s: ' + imgData.urlStill );
+        if (state === "still") {
+            $(this).data("state", "animate");
+            $(this).attr("src", imgData.urlAnimate);
+        } else {
+            $(this).data("state", "still");
+            $(this).attr("src", imgData.urlStill);
+        }
+                
+    });
+
   
 
     $("#button1").on("click", function () {
