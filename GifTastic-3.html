@@ -15,27 +15,39 @@
             <h3>To do:</h3>
             <ul>
                 <li>Style/format images before/after</li>
-                <li><s>Implement pause/start</s> (with preload?)</li>
-                <li><s>Implement new submissions</s> (with basic sanitization? simply does <code>trim(), toLowerCase()</code> and checks in array)</li>
+                <li>
+                    <s>Implement pause/start</s> (with preload?)</li>
+                <li>
+                    <s>Implement new submissions</s> (with basic sanitization? simply does
+                    <code>trim(), toLowerCase()</code> and checks in array)</li>
                 <li>Controls for max number, rating?</li>
             </ul>
         </div>
-        
-        <div id="animal-buttons">
-            <!-- buttons go here -->
+        <div class="row">
+            <div class="col-md-12">
+                <div id="animal-buttons">
+                    <!-- buttons go here -->
+                </div>
+    
+            </div>
         </div>
-
-        <form id="animal-form">
-            <label for="animal-text"></label>
-            <input type="text" id="animal-text">
-            <button class="btn btn-primary" id="animal-button">Submit</button>
-
-
-        </form>
+    
+        <div class="row">
         
-        <button class="btn btn-primary" id="button1">button1</button>
-        <div id="images">
-            <!-- images go here -->
+            <div class="col-md-3 col-md-push-9">
+                <form id="animal-form">
+                    <label for="animal-text">Add an animal</label>
+                    <input type="text" id="animal-text" class="form-control">
+                    <button class="btn btn-block btn-primary" id="animal-button">Submit</button>
+                </form>
+            </div>
+        
+            <div class="col-md-9 col-md-pull-3">
+                <div id="images">
+                    <!-- images go here -->
+                </div>
+            </div>
+        
         </div>
 
 

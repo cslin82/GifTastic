@@ -15,12 +15,11 @@ $(document).ready(function () {
         addButton(element);
     });
 
-
     function addButton(newAnimal) {
         newButton = $('<button>')
-        newButton.text(newAnimal);
-        newButton.addClass("btn btn-primary");
-        newButton.data("value", newAnimal);
+            .text(newAnimal)
+            .addClass("btn btn-primary")
+            .data("value", newAnimal);
         $('#animal-buttons').append(newButton);
     }
 
@@ -29,7 +28,6 @@ $(document).ready(function () {
         var currentAnimal = $('#animal-text').val().trim();
         currentAnimal = currentAnimal.toLowerCase();
         if (animals.indexOf(currentAnimal) === -1 ) {
-            console.log('animal-button clicked ' + currentAnimal);
             addButton(currentAnimal);
         } else {
             console.log('already in list');
@@ -39,9 +37,6 @@ $(document).ready(function () {
     });
 
     $('#animal-buttons').on('click', 'button', function () {
-        console.log('animal-button button clicked');
-        console.log($(this).text());
-        console.log($(this).data("value"));
         animalQ = $(this).data("value");
 
         $('#images').empty();
@@ -61,16 +56,11 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         })
-
             // After the data from the AJAX request comes back
             .then(function (response) {
-                console.log(response);
-                console.log(response.data[0]);
                 gifArr = response.data;
 
                 gifArr.forEach(element => {
-                    console.log(element.images.fixed_height.url);
-                    console.log(element.images.fixed_height_still.url);
                     newImg = $('<img>')
                         .addClass('gif')
                         .attr({
@@ -85,7 +75,6 @@ $(document).ready(function () {
                             state: "still"
                         });
                     $('#images').append(newImg);
-                    console.log('appended');
                 });
             });
     });
@@ -93,8 +82,6 @@ $(document).ready(function () {
     $('#images').on('click', '.gif', function () {
         var imgData = $(this).data();
         var state = imgData.state;
-        console.log(imgData);
-        console.log('clicked an image. a: ' + imgData.urlAnimate + ' s: ' + imgData.urlStill );
         if (state === "still") {
             $(this).data("state", "animate");
             $(this).attr("src", imgData.urlAnimate);
@@ -103,24 +90,6 @@ $(document).ready(function () {
             $(this).attr("src", imgData.urlStill);
         }
                 
-    });
-
-  
-
-    $("#button1").on("click", function () {
-        console.log('button 1 clicked');
-        newImg = $('<img>')
-            .attr({
-                src: "https://media3.giphy.com/media/l4FGusNO4CRdCjq92/200.gif",
-                alt: "rat gif 1",
-                // width: "",
-                // height: ""
-            });
-        $('#images').append(newImg);
-        console.log('appended');
-
-
-        
     });
 
 });
