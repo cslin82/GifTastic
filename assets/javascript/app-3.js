@@ -48,7 +48,7 @@ $(document).ready(function () {
             limit: maxImages,
             rating: "pg-13"
         };
-        var queryURL = "http://api.giphy.com/v1/gifs/search?" + jQuery.param(params);
+        var queryURL = "https://api.giphy.com/v1/gifs/search?" + jQuery.param(params);
 
         console.log(queryURL);
 
